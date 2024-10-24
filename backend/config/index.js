@@ -1,5 +1,9 @@
 require('dotenv').config();
 
+if (!process.env.SECRET) {
+  throw new Error('SECRET is not defined in the environment variables');
+}
+
 module.exports = {
-  secret: process.env.NODE_ENV === 'production' ? process.env.SECRET : process.env.SECRET || 'e6F9KvSDf4dyXj'
+  secret: process.env.SECRET
 };
