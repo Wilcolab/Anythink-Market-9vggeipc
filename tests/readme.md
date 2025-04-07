@@ -6,5 +6,3 @@
    * Without Docker: To test node server, go to relevant backend server,  run ```yarn install``` and `ENGINE_BASE_URL=http://localhost:3003 WILCO_ID=0 MONGODB_URI=mongodb://localhost/anythink-market yarn start`
 2. Run the tests in the /tests/e2e/ using `yarn test`
    To start the app use Docker. It will start both frontend and backend, including all the relevant dependencies, and the db.
-
-   ####
