@@ -1,5 +1,4 @@
 import React from 'react'
-import SocialShare from './SocialShare'
 
 const ResultsSummary = ({ results, onRestart }) => {
   const { score, total, percentage, results: questionResults } = results
@@ -129,7 +128,20 @@ const ResultsSummary = ({ results, onRestart }) => {
             🔄 Try Again
           </button>
           
-          <SocialShare results={results} />
+          <button
+            onClick={() => {
+              const text = `I just scored ${score}/${total} (${percentage}%) on the 90s Fun Quiz! 🎉`;
+              if (navigator.share) {
+                navigator.share({ text });
+              } else {
+                navigator.clipboard.writeText(text);
+                alert('Score copied to clipboard!');
+              }
+            }}
+            className="btn-secondary text-lg px-8 py-4"
+          >
+            📤 Share Score
+          </button>
         </div>
 
         {/* Fun Stats */}
