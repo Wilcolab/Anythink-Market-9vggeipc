@@ -41,3 +41,20 @@ jobs:
 
     - name: Check test coverage
       run: npm test -- --coverage --coverageThreshold.global.statements=80
+
+  labeler:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Label PR by directory
+      if: github.event_name == 'pull_request'
+      uses: ./.github/actions/label-pr-by-directory
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
