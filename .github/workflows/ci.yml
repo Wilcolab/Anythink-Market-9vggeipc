@@ -32,6 +32,12 @@ jobs:
         
     - name: Install dependencies
       run: npm install
+
+    - name: Run ESLint
+      run: npx eslint .
       
     - name: Run tests
       run: npm test
+
+    - name: Check test coverage
+      run: npm test -- --coverage --coverageThreshold.global.statements=80
