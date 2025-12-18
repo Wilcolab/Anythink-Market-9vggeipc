@@ -1,0 +1,24 @@
+name: Ask AI
+
+on:
+  workflow_dispatch:
+
+permissions:
+  models: read
+
+jobs:
+  ask-ai:
+    runs-on: ubuntu-latest
+    steps:
+      - name: AI Inference
+        id: ai-response
+        uses: actions/ai-inference@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          prompt: "Tell me a short programming joke about Ness"
+
+      - name: Display AI Response
+        run: |
+          echo "## 🤖 AI Response" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "${{ steps.ai-response.outputs.response }}" >> $GITHUB_STEP_SUMMARY
