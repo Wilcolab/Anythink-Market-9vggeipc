@@ -9,6 +9,23 @@ on:
       - main
 
 jobs:
+  label:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Label PR by directory
+      uses: ./.github/actions/label-pr-by-directory
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+  
   build:
     runs-on: ubuntu-latest
     strategy:

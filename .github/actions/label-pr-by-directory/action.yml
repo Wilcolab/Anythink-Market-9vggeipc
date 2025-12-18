@@ -1,0 +1,17 @@
+name: 'Label PR by Directory'
+description: 'Automatically labels pull requests based on which directories contain changed files'
+author: 'Your Team'
+
+inputs:
+  github-token:
+    description: 'GitHub token for API access'
+    required: true
+    default: ${{ github.token }}
+
+runs:
+  using: 'node20'
+  main: 'index.js'
+
+branding:
+  icon: 'tag'
+  color: 'blue'
