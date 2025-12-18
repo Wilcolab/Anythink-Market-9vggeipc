@@ -1,9 +1,0 @@
-name: "Label PR by Directory"
-description: "Labels PRs based on which top-level directories their changed files are in"
-inputs:
-  github_token:
-    description: "GitHub token"
-    required: true
-runs:
-  using: "node16"
-  main: "index.js"
